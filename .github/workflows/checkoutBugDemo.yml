@@ -8,8 +8,6 @@ jobs:
       - name: checkoutWithTagsBug
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
-          fetch-depth: 1
           fetch-tags: true
       - name: showRefs
         shell: bash
