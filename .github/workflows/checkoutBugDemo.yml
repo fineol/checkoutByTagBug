@@ -1,0 +1,22 @@
+name: checkoutByTagBug
+run-name: checkoutByTagBug Demo
+on: workflow_dispatch
+jobs:
+  demonstrateBug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkoutWithTagsBug
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+          fetch-tags: true
+      - name: showRefs
+        shell: bash
+        run: |
+          echo "As checked out by checkout@v4:"
+          git show-ref
+          echo
+          git fetch --tags --force
+          echo "After git fetch --tags --force:"
+          git show-ref
